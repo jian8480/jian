@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jihee Portfolio — 감성 플랫 일러스트</title>
+  <meta name="description" content="감성적인 플랫 스타일 인물 일러스트 포트폴리오 — A4 PNG, 검은 외곽선 없이, 현실적인 비율과 디테일" />
+  <meta property="og:title" content="Jihee Portfolio — Emotional Flat Illustration" />
+  <meta property="og:description" content="Flat이지만 섬세한, 현실적인 비율과 감정의 결을 담은 인물 일러스트 포트폴리오" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#fcffde" />
+  <style>
+    :root{
+      --bg:#fffdfa; --card:#ffffff; --ink:#222; --muted:#656565; --line:rgba(0,0,0,.08);
+      --beige:#f4efe6; --hl:#fcffde; --accent:#c7d2fe; --maxw:1200px; --r:18px; --shadow:0 10px 30px rgba(0,0,0,.06);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif; color:var(--ink); background:linear-gradient(180deg,var(--bg),var(--beige));}
+    a{color:inherit; text-decoration:none}
+    img{display:block; max-width:100%}
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(160%) blur(8px); background-color:rgba(255,255,255,.75); border-bottom:1px solid var(--line)}
+    .nav{height:68px; display:flex; align-items:center; justify-content:space-between}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800}
+    .brand-badge{width:12px; height:12px; border-radius:999px; background:conic-gradient(from 180deg, var(--hl), var(--accent)); box-shadow:0 0 0 3px rgba(0,0,0,.04)}
+    .menu{display:flex; gap:18px}
+    .menu a{padding:8px 10px; border-radius:10px}
+    .menu a:hover{background:var(--hl)}
+
+    /* Hero */
+    .hero{padding:96px 0 56px}
+    .hero-wrap{display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center}
+    .chip{display:inline-flex; align-items:center; gap:8px; background:var(--hl); padding:6px 12px; border-radius:999px; font-size:13px}
+    h1{font-size:clamp(28px,5.2vw,48px); line-height:1.12; margin:14px 0}
+    .lead{color:var(--muted)}
+    .cta{display:flex; gap:12px; margin-top:22px}
+    .btn{display:inline-flex; align-items:center; justify-content:center; padding:12px 18px; border-radius:14px; border:1px solid var(--line); background:#fff; box-shadow:var(--shadow); font-weight:700}
+    .btn.primary{background:var(--ink); color:#fff; border-color:transparent}
+
+    .hero-card{background:linear-gradient(180deg,#fff,var(--hl)); border-radius:24px; padding:24px; box-shadow:var(--shadow)}
+    .thumbs{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
+    .thumb{background:#fff; border-radius:16px; height:110px; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center}
+
+    /* Section */
+    section{padding:72px 0}
+    .head{display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom:24px}
+    .title{font-size:28px; font-weight:800}
+    .sub{color:var(--muted)}
+
+    /* Filters */
+    .filters{display:flex; gap:10px; flex-wrap:wrap}
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid var(--line); border-radius:999px; background:#fff; cursor:pointer; font-size:14px}
+    .pill[aria-pressed="true"]{background:var(--ink); color:#fff}
+
+    /* Grid */
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .work{background:#fff; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column}
+    .work .ph{background:var(--hl); height:180px}
+    .meta{padding:14px 14px 16px}
+    .tag{display:inline-flex; padding:4px 10px; font-size:12px; border:1px solid var(--line); border-radius:999px; background:#fff}
+
+    /* Case Study Drawer */
+    .drawer{position:fixed; inset:0; display:none;}
+    .drawer[open]{display:grid; grid-template-columns:360px 1fr}
+    .panel{grid-column:2; background:#fff; height:100vh; overflow:auto; box-shadow:-20px 0 40px rgba(0,0,0,.16)}
+    .panel-head{position:sticky; top:0; background:#fff; border-bottom:1px solid var(--line); padding:14px 20px; display:flex; justify-content:space-between; align-items:center}
+    .panel-body{padding:20px}
+    .steps{display:grid; gap:16px}
+    .step{background:#fff; border:1px dashed var(--line); border-radius:14px; padding:14px}
+
+    /* About */
+    .about{display:grid; grid-template-columns:1.1fr 1fr; gap:24px}
+    .card{background:#fff; border-radius:18px; padding:20px; box-shadow:var(--shadow)}
+    .kvs{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
+    .kv{background:var(--hl); padding:12px; border-radius:14px; text-align:center; font-weight:700}
+
+    /* Contact */
+    .contact{display:grid; grid-template-columns:1fr 1fr; gap:24px}
+    form{background:#fff; padding:20px; border-radius:18px; box-shadow:var(--shadow)}
+    label{display:block; font-size:14px; color:#555; margin:10px 0 6px}
+    input, textarea{width:100%; border:1px solid var(--line); border-radius:12px; padding:12px 12px; font:inherit}
+    textarea{min-height:120px; resize:vertical}
+    .note{font-size:14px; color:var(--muted)}
+
+    footer{padding:42px 0; color:#666; border-top:1px solid var(--line)}
+
+    /* Responsive */
+    @media (max-width: 980px){ .hero-wrap, .about, .contact{grid-template-columns:1fr} .grid{grid-template-columns:1fr 1fr} }
+    @media (max-width: 560px){ .menu{display:none} .grid{grid-template-columns:1fr} .hero{padding-top:72px} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand"><span class="brand-badge"></span> JIHEE포토폴리오</div>
+      <nav class="menu">
+        <a href="#works">작업</a>
+        <a href="#process">프로세스</a>
+        <a href="#about">소개</a>
+        <a href="#contact">문의</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero container">
+      <div class="hero-wrap">
+        <div>
+          <span class="chip">포트폴리오 · 플랫하지만 단순하지 않게 · PNG 투명</span>
+          <h1>감성 플랫 인물 일러스트 포트폴리오</h1>
+          <p class="lead">검은 외곽선을 쓰지 않고, 현실적인 비율과 우아한 텍스처로 사람의 온도를 그립니다. A4 기반, 투명 PNG 제공.</p>
+          <div class="cta">
+            <a class="btn primary" href="#works">대표 작업 보기</a>
+            <a class="btn" href="#process">작업 과정 보기</a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <strong>대표 시리즈</strong>
+          <p class="note">웨딩 · 커플 · 꿈 · 사이버펑크 기계인간 · 가족</p>
+          <div class="thumbs" aria-hidden="true">
+            <div class="thumb">PNG 투명</div>
+            <div class="thumb">웨딩</div>
+            <div class="thumb">감성 인물</div>
+            <div class="thumb">3/4 뷰</div>
+            <div class="thumb">루즈핏</div>
+            <div class="thumb">헤어 텍스처</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- WORKS -->
+    <section id="works">
+      <div class="container">
+        <div class="head">
+          <div>
+            <div class="title">선택 작업(Selected Works)</div>
+            <div class="sub">분야별로 필터링해 보세요.</div>
+          </div>
+          <div class="filters" role="toolbar" aria-label="필터">
+            <button class="pill" data-filter="all" aria-pressed="true">전체</button>
+            <button class="pill" data-filter="wedding">웨딩</button>
+            <button class="pill" data-filter="couple">커플</button>
+            <button class="pill" data-filter="dream">꿈 시리즈</button>
+            <button class="pill" data-filter="cyberpunk">사이버펑크</button>
+            <button class="pill" data-filter="family">가족</button>
+          </div>
+        </div>
+
+        <div class="grid" id="grid">
+          <!-- 예시 카드(이미지로 교체 가능) -->
+          <article class="work" data-tags="wedding">
+            <div class="ph" aria-hidden="true"></div>
+            <div class="meta">
+              <span class="tag">웨딩</span>
+              <h4 style="margin:10px 0 6px">Marry N · 웨딩 아치</h4>
+              <p class="note">베이지 팔레트와 #fcffde 하이라이트, 검은 외곽선 없이.</p>
+              <a class="btn" data-case="case-wedding">케이스 스터디</a>
+            </div>
+          </article>
+
+          <article class="work" data-tags="couple">
+            <div class="ph"></div>
+            <div class="meta">
+              <span class="tag">커플</span>
+              <h4 style="margin:10px 0 6px">어깨까지 닿는 키 차이</h4>
+              <p class="note">154cm ↔ 180cm 비율 가이드, 3/4 뷰.</p>
+              <a class="btn" data-case="case-couple">케이스 스터디</a>
+            </div>
+          </article>
+
+          <article class="work" data-tags="dream">
+            <div class="ph"></div>
+            <div class="meta">
+              <span class="tag">꿈</span>
+              <h4 style="margin:10px 0 6px">놓치지 않았던 빛</h4>
+              <p class="note">희망의 온도를 담은 감성 일러스트.</p>
+              <a class="btn" data-case="case-dream">케이스 스터디</a>
+            </div>
+          </article>
+
+          <article class="work" data-tags="cyberpunk">
+            <div class="ph"></div>
+            <div class="meta">
+              <span class="tag">사이버펑크</span>
+              <h4 style="margin:10px 0 6px">기계인간 · 네온</h4>
+              <p class="note">네온 배경 속 플랫하지만 디테일한 인물.</p>
+              <a class="btn" data-case="case-cyber">케이스 스터디</a>
+            </div>
+          </article>
+
+          <article class="work" data-tags="family">
+            <div class="ph"></div>
+            <div class="meta">
+              <span class="tag">가족</span>
+              <h4 style="margin:10px 0 6px">비닐하우스 에피소드</h4>
+              <p class="note">엄마·언니·이모·삼촌이 등장하는 따뜻한 장면.</p>
+              <a class="btn" data-case="case-family">케이스 스터디</a>
+            </div>
+          </article>
+
+          <article class="work" data-tags="wedding">
+            <div class="ph"></div>
+            <div class="meta">
+              <span class="tag">아이콘</span>
+              <h4 style="margin:10px 0 6px">웨딩 맵 & 아이콘</h4>
+              <p class="note">한글 제외 버전/PNG 세트 제공.</p>
+              <a class="btn" data-case="case-map">케이스 스터디</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+      <div class="container">
+        <div class="head">
+          <div>
+            <div class="title">프로세스</div>
+            <div class="sub">문제 정의 → 컨셉 → 시각화 → 결과물. 과정 중심의 포트폴리오.</div>
+          </div>
+          <a class="btn" href="#contact">의뢰 문의</a>
+        </div>
+        <div class="about">
+          <div class="card">
+            <h3 style="margin:0 0 8px">문제 정의</h3>
+            <p class="note">사용자/클라이언트 요구, 레퍼런스 취합, 페르소나/톤앤무드 정리.</p>
+            <h3 style="margin:14px 0 8px">컨셉</h3>
+            <p class="note">컬러 팔레트(#fcffde 하이라이트), 얼굴/몸 비율, 헤어 텍스처, 루즈핏 실루엣 가이드.</p>
+            <h3 style="margin:14px 0 8px">시각화</h3>
+            <p class="note">러프 → 클린업(검은 외곽선 없음) → 주름/광택 → PNG 투명 산출.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 8px">결과물</h3>
+            <ul style="margin:0; padding-left:18px; line-height:1.8">
+              <li>A4 PNG(300dpi) 투명 / JPG 배경 포함 버전</li>
+              <li>색상/텍스트 교정 1–2회 포함(프로젝트별 상이)</li>
+              <li>상업 이용 라이선스 협의</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="head">
+          <div>
+            <div class="title">소개</div>
+            <div class="sub">Flat하지만 디테일, 현실적인 비율과 감정의 결</div>
+          </div>
+        </div>
+        <div class="about">
+          <div class="card">
+            <h3 style="margin:0 0 8px">작업 키워드</h3>
+            <div class="kvs">
+              <div class="kv">Flat · 감성</div>
+              <div class="kv">현실적 비율</div>
+              <div class="kv">PNG 투명</div>
+            </div>
+            <p class="note" style="margin-top:10px">얼굴은 갸름하고 우아한 비율, 과장 없는 눈. 옷은 루즈핏, 직각 어깨와 자연 주름.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 8px">서비스</h3>
+            <ul style="margin:0; padding-left:18px; line-height:1.8">
+              <li>커플/웨딩/가족 인물 일러스트 (A4 기본, PNG 투명)</li>
+              <li>브랜드/앨범/포스터 키비주얼</li>
+              <li>에세이·포트폴리오용 삽화/표지</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="head">
+          <div>
+            <div class="title">문의</div>
+            <div class="sub">작업 의뢰, 협업, 출판 제안은 아래로 연락 주세요.</div>
+          </div>
+        </div>
+        <div class="contact">
+          <form onsubmit="handleSubmit(event)">
+            <label for="name">이름 / 회사명</label>
+            <input id="name" required />
+            <label for="email">이메일</label>
+            <input id="email" type="email" required />
+            <label for="msg">내용</label>
+            <textarea id="msg" placeholder="프로젝트 소개, 일정, 예산 범위를 알려주시면 정확히 도와드려요."></textarea>
+            <div style="display:flex; gap:10px; margin-top:14px">
+              <button class="btn primary" type="submit">보내기</button>
+              <a class="btn" href="mailto:jian8480@naver.com">메일로 보내기</a>
+            </div>
+          </form>
+          <div class="card">
+            <h3 style="margin:0 0 8px">가이드</h3>
+            <ul style="margin:0; padding-left:18px; line-height:1.8">
+              <li>A4 PNG 투명 기본 제공 (요청 시 JPG)</li>
+              <li>검은 외곽선 없이 클린 & 플랫</li>
+              <li>현실적인 인물 비율 · 자연스러운 헤어 텍스처</li>
+            </ul>
+            <p class="note" style="margin-top:10px">상업용 사용, 저작권/라이선스 조건은 프로젝트 성격에 따라 협의합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CASE STUDY DRAWER -->
+  <dialog class="drawer" id="drawer">
+    <div class="panel">
+      <div class="panel-head">
+        <strong id="case-title">케이스 스터디</strong>
+        <button class="pill" onclick="closeDrawer()">닫기</button>
+      </div>
+      <div class="panel-body" id="case-body"></div>
+    </div>
+  </dialog>
+
+  <footer>
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <div>© <span id="yy"></span> JIHEE포토폴리오. All rights reserved.</div>
+      <div class="note">
+        <a href="https://www.instagram.com/ponyoyo_o/" target="_blank" rel="noopener">Instagram</a> · 
+        <a href="mailto:jian8480@naver.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yy').textContent = new Date().getFullYear();
+
+    function handleSubmit(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('msg').value.trim();
+      const subject = encodeURIComponent(`[문의] ${name}`);
+      const body = encodeURIComponent(`이름/회사: ${name}\n이메일: ${email}\n\n${msg}`);
+      window.location.href = `mailto:jian8480@naver.com?subject=${subject}&body=${body}`;
+    }
+
+    // Filters
+    const pills = document.querySelectorAll('.pill[data-filter]');
+    const cards = document.querySelectorAll('.work');
+    pills.forEach(p=>p.addEventListener('click',()=>{
+      pills.forEach(x=>x.setAttribute('aria-pressed','false'));
+      p.setAttribute('aria-pressed','true');
+      const f = p.dataset.filter;
+      cards.forEach(card=>{
+        const ok = f==='all' || (card.dataset.tags||'').includes(f);
+        card.style.display = ok ? 'flex' : 'none';
+      });
+    }));
+
+    // Case Study Drawer Data
+    const CASES = {
+      'case-wedding': {
+        title: 'Marry N · 웨딩 아치',
+        steps: [
+          {h:'문제 정의', t:'베이지 톤 & #fcffde 하이라이트, 검은 외곽선 없이 클린한 인상. 커플의 비율과 식장 무드 반영.'},
+          {h:'컨셉', t:'아치/커튼/플라워의 레이아웃. 얼굴은 갸름하고 우아하게, 눈은 과장 없이.'},
+          {h:'시각화', t:'러프→클린업→주름/광택 추가→PNG 투명 산출.'},
+          {h:'결과물', t:'A4 PNG(300dpi), 소셜용 JPG 버전 동시 제공.'}
+        ]
+      },
+      'case-couple': {
+        title: '어깨까지 닿는 키 차이',
+        steps: [
+          {h:'문제 정의', t:'154cm/180cm 비율 유지, 3/4 뷰에서 두 인물의 관계성 표현.'},
+          {h:'컨셉', t:'루즈핏, 직각 어깨, 자연 주름. 헤어 텍스처는 부드럽고 레이어드.'},
+          {h:'시각화', t:'실루엣 → 얼굴 구조 → 의복 주름 → 하이라이트.'},
+          {h:'결과물', t:'PNG 투명, 배경 있는 JPG 옵션.'}
+        ]
+      },
+      'case-dream': {
+        title: '놓치지 않았던 빛',
+        steps: [
+          {h:'문제 정의', t:'희망의 온도를 시각화하는 감성 일러스트.'},
+          {h:'컨셉', t:'따뜻한 하이라이트와 부드러운 그라디언트로 감정선 구성.'},
+          {h:'시각화', t:'플랫하지만 단순하지 않게—미세한 하이라이트와 그림자.'},
+          {h:'결과물', t:'A4 PNG, 인쇄용 CMYK 가이드 제공.'}
+        ]
+      },
+      'case-cyber': {
+        title: '기계인간 · 네온',
+        steps: [
+          {h:'문제 정의', t:'네온 환경에서 인물의 존재감 확보.'},
+          {h:'컨셉', t:'미니멀 외곽, 광원 대비로 볼륨 강조(블랙 라인 없이).'},
+          {h:'시각화', t:'네온 리플렉션과 헤어 하이라이트 조정.'},
+          {h:'결과물', t:'PNG 투명 + 다크 배경 프리뷰.'}
+        ]
+      },
+      'case-family': {
+        title: '비닐하우스 에피소드',
+        steps: [
+          {h:'문제 정의', t:'가족의 따뜻함과 현실적 비율 유지.'},
+          {h:'컨셉', t:'은은한 베이지 톤, 자연스러운 표정과 포즈.'},
+          {h:'시각화', t:'의자/배경 소품을 단순화해 인물에 집중.'},
+          {h:'결과물', t:'PNG 투명, 스토리 보드 3컷 세트.'}
+        ]
+      },
+      'case-map': {
+        title: '웨딩 맵 & 아이콘',
+        steps: [
+          {h:'문제 정의', t:'식장 지도/아이콘 세트—한글 제외 버전 포함.'},
+          {h:'컨셉', t:'아이콘은 라인 없이 면으로, 일관된 코너 반경.'},
+          {h:'시각화', t:'크기 16/24/48px 최적화.'},
+          {h:'결과물', t:'PNG/SVG 세트, 사용 가이드.'}
+        ]
+      }
+    };
+
+    document.querySelectorAll('[data-case]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const k = btn.dataset.case; const data = CASES[k];
+        const dlg = document.getElementById('drawer');
+        const title = document.getElementById('case-title');
+        const body = document.getElementById('case-body');
+        if(!data) return;
+        title.textContent = data.title;
+        body.innerHTML = data.steps.map(s=>`<div class="step"><strong>${s.h}</strong><p class="note" style="margin:6px 0 0">${s.t}</p></div>`).join('');
+        dlg.showModal();
+      })
+    });
+    function closeDrawer(){ document.getElementById('drawer').close(); }
+  </script>
+</body>
+</html>
